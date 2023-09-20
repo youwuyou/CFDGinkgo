@@ -24,8 +24,6 @@ jobs:
       with:
         path: |
           ~/.cache/ginkgo
-          ~/.cache/opencv
-          /usr/src/gtest
         key: dependencies-${{ runner.os }}-${{ hashFiles('**/*.txt') }}
         restore-keys: |
           dependencies-${{ runner.os }}-
@@ -41,29 +39,3 @@ jobs:
           sudo make install
           cd ../..
         fi
-
-    - name: Install Google Test
-      run: |
-        if [ ! -d /usr/src/gtest ]; then
-          sudo apt-get update
-          sudo apt-get install -y libgtest-dev
-          cd /usr/src/gtest
-          sudo cmake .
-          sudo make
-          sudo mv libgtest* /usr/lib/
-          cd -
-        fi
-
-    - name: Install OpenCV
-      run: |
-        if [ ! -d ~/.cache/opencv ]; then
-          sudo apt-get update
-          sudo apt-get install -y libopencv-dev
-        fi
-
-    - name: Build and Test
-      run: |
-        mkdir build && cd build
-        cmake -DCMAKE_BUILD_TYPE=${{ matrix.cmake-build-type }} ..
-        make
-        ctest --output-on-failure
