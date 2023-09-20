@@ -28,13 +28,13 @@ git clone git@github.com:youwuyou/CFDGinkgo.git
 
 This will create a subdirectory CFDGinkgo containing codes and other data needed for the tutorial examples.
 
-Now we create a build directory and initialize the build system. We compile the repository with `-DBUILD_TESTS=ON`, you could also switch it off if you just want to build the examples themselves without testing.
+Now we create a build directory and initialize the build system. By default, we compile the repository with tests, you could also switch it off by using the flag `-DBUILD_TESTS=OFF` if you just want to build the examples themselves without testing.
 
 ```bash
 cd CFDGinkgo
 mkdir build
 cd build
-cmake -DBUILD_TESTS=ON .. && make
+cmake .. && make
 ```
 
 Now let us run a demonstration code. For running this code, we assume you already have the [OpenCV library](https://opencv.org/) installed. And make sure you locate at `CFDGinkgo/build` directory.
