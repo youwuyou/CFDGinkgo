@@ -70,7 +70,7 @@ setting.
 #include <chrono>
 #include <fstream>
 #include <iostream>
-
+#include <map>
 
 #include <opencv2/core.hpp>
 #include <opencv2/videoio.hpp>
